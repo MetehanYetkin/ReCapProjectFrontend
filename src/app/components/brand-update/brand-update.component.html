@@ -1,0 +1,83 @@
+<div class="col-md-5">
+    <div>
+        <table class="table table-striped table-primary">
+            <thead>
+                <tr>
+                
+                
+                <th>Color Name</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let brand of brands">
+                
+                 <td>{{brand.brandId}}</td>
+                 <td>{{brand.brandName}}</td>
+                 <th><button class="btn btn-success" routerLink="brandUpdatePage/{{brand.brandId}}">Chooes</button></th>
+                 
+                </tr>
+            </tbody>
+        </table>
+    </div>
+ </div>
+
+
+
+<div class="content">
+    <div class="col-md-12">
+    <div class="card">
+    <div class="card-header"><h5 class="title" >Update Brand</h5>
+    <div class="card-body">
+    
+         <form [formGroup]="updateFormGroup">
+             
+             <div class="mb-3">
+
+             <label for="brandName">Brand Name</label>
+             <div class="form-group">
+                 <input  
+                 type="text"
+                 id="brandName"
+                 formControlName="brandName"
+                 class="form-control"
+                 placeholder="Brand Name"
+                 
+                 />
+             </div>
+            </div>
+
+
+            <div class="mb-3">
+
+                <label for="brandId">brandId </label>
+                <div class="form-group">
+                    <input  
+                    type="number"
+                    id="brandId"
+                    formControlName="brandId"
+                    class="form-control"
+                    placeholder="brandId "
+                    
+                    />
+                </div>
+               </div>
+
+
+
+         </form>
+    
+    </div>
+    <div class="card-footer">
+
+        <button class="btn btn-fill btn-primary" (click)="update()">Update </button>
+    
+    </div>
+
+    </div>
+    </div>
+    </div> 
+    </div>
+
+    <app-brand-add></app-brand-add> 
+

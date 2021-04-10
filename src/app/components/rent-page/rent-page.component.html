@@ -1,0 +1,76 @@
+<div class="row">
+    <div class="col-md-7">
+        
+        <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+            <div class="carousel-inner">
+                <div *ngFor="let image of images let i = index"  [ngClass]="getSliderClassName(i)">
+                    <img src="{{apiUrl}}{{image.imagePath}}" class="d-block w-100" alt="..." height="300">
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+            
+        </div>
+            
+            <div *ngFor="let image of images">
+            <table  class="table table-striped table-primary">
+                <thead>
+                    <tr >
+                     
+                        <th>Car Name</th>
+                        <th>Brand Name</th>
+                        <th>Color Name</th>
+                        <th>Daily Price</th>
+                       
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr >
+                  
+                    <td>{{image.carName}}</td>
+                    <td>{{image.brandName}}</td>
+                    <td>{{image.colorName}}</td>
+                    <td>{{image.dailyPrice}}</td>
+                    
+                </tr>
+                </tbody>
+            </table>
+            </div>
+    </div>
+    <div class="col-md-5">
+      <div>
+          <table class="table table-striped table-primary">
+              <thead>
+                  <tr>
+                  <th>ID</th>
+                  
+                  <th>Company Name</th>
+                  <th></th>
+                </tr>
+              </thead>
+              <tbody>
+                  <tr *ngFor="let customer of customers">
+                   <td>{{customer.customerId}}</td>
+
+                   <td>{{customer.companyName}}</td>
+                   <th><button class="btn btn-danger" (click)="setCustomer(customer.customerId)">Chooes</button></th>
+                  </tr>
+              </tbody>
+          </table>
+      </div>
+        <label>Rent Start Date</label>
+        <input type="date" style="width: 100%;" class="mb-3"  
+         [ngModel]="rentDate"  (ngModelChange)="setDate('start', $event)"  name="rentDate"><br>
+        <label>Rent End Date</label>
+        <input type="date" style="width: 100%;" class="mb-3"  [ngModel]="returnDate"  (ngModelChange)="setDate('end', $event)"  name="returnDate"><br>
+        
+        
+        <button class="btn btn-success" (click)="addRental()" >Rent</button>
+    </div>  
+</div>

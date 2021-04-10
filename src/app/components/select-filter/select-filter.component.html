@@ -1,0 +1,39 @@
+<thead>
+    <tr>
+   
+      <th>
+          Seçim
+      </th>
+    </tr>
+  </thead>
+<div>
+    <button routerLink="cars/filter/{{currentColorId}}/{{currentBrandId}}" type="button" class="btn btn-success "> 
+        Filtrele
+       
+    </button>
+
+<select [(ngModel)]="currentBrandId"
+ class="form-select px-2"  aria-label="Default select example">
+  
+    <option [ngValue]="undefined" disabled  selected> > Markalar</option>
+    <option [selected]="setCurrentBrand(brand.brandId)"
+    *ngFor="let brand of brands"
+    [value]="brand.brandId"
+    >{{brand.brandName}} </option>
+  
+  </select>
+ </div>
+
+
+
+  <select [(ngModel)]="currentColorId" 
+  class="form-select px-2 "  aria-label="Default select example">
+    <option [ngValue]="undefined" disabled  selected>  >Renkler</option>
+
+    <option [selected]="setCurrentColor(color.colorId)"
+    *ngFor="let color of colors" 
+    [value]="color.colorId"
+    
+    > {{color.colorName}} </option>
+    
+  </select>

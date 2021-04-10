@@ -1,0 +1,55 @@
+
+<div *ngIf="dataLoaded==false" class="spinner-border text-info" role="status">
+  <span class="visually-hidden">Loading...</span>
+</div>
+
+
+<div class="mb-3">
+  <label for="filterTextCar" class="form-label">Araba Ara</label>
+  <input type="text" [(ngModel)]="filterTextCar" class="form-control" id="filterTextCar" placeholder="arama ifadesi giriniz">
+</div>
+
+<div *ngIf="filterTextCar" class="alert alert-success">
+{{filterTextCar}} aradınız
+</div>
+
+
+
+
+
+
+<table class="table">
+  <thead>
+    <tr>
+     
+      <th>Marka</th>
+      <th>Renk</th>
+      <th>Model Yılı</th>
+      <th>Günlük Fiyat</th>
+      <th>Açıklama</th>
+      <th>Stok Adedi</th>
+      <th>Araç İsmi</th>
+      <th>Kirala</th>
+    </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let car of cars|filterCarPipe:filterTextCar">
+    
+    <td>{{ car.brandName }}</td>
+    <td>{{ car.colorName }}</td>
+    <td>{{ car.modelYear }}</td>
+    <td>{{ car.dailyPrice |currency:"₺"}}</td>
+    <td>{{ car.description }}</td>
+    <td>{{ car.unitsInStock }}</td>
+    <td>{{ car.carName }}</td>
+    <td>{{ car.carId }}</td>
+    <td><button routerLink="cars/images/{{car.carId}}" type="button" class="btn btn-success">
+      See More</button></td>
+      
+      <td><button class="btn btn-success" routerLink="cars/rental/{{car.carId}}">Rent</button></td>
+      <td><button class="btn btn-success" routerLink="cars/update/{{car.carId}}">Update</button></td>
+  </tr>
+</tbody>
+</table>
+
+ 
